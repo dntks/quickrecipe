@@ -45,7 +45,7 @@ interface RecipeApi {
     ): RecipeDetailsApiEntity
 
     companion object {
-        const val API_KEY = "0c2f426c236f4f569c13dedcc1c420a4"
+        const val API_KEY = "225994409205428ab8859ea0a87eeaf0"
         const val ELEMENTS_PER_REQUEST = 40
     }
 }
