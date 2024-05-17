@@ -34,3 +34,10 @@ is near to the last element.
 
 With the unit tests I covered most of the cases where logic is involved, from the viewmodels to the
 data sources I covered as much as time allowed.
+
+Improvement possibilities:
+Better error handling, messages that are more meaningful to the user.
+Pagination in a more robust way.
+Retry mechanism for remote requests, checking network connection and add logic based on that to
+retrieve
+elements from the database.
