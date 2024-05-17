@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">QuickRecipe</string>
+    <string name="recipes">Recipes</string>
+    <string name="back">back</string>
+    <string name="search_by_recipe_title">Search by title</string>
+    <string name="search_by_ingredients">Search by ingredients</string>
+    <string name="recipe_image">recipe image</string>
+    <string name="no_recipes_found">No recipes found</string>
+    <string name="no_content">No details found.</string>
+    <string name="details_error">Couldn\'t load recipe details due to an error. Please try again later.</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="recipe_details">Recipe details</string>
+</resources>

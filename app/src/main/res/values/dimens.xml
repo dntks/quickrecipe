@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="generic_padding">12dp</dimen>
+    <dimen name="card_padding">10dp</dimen>
+    <dimen name="extraBottom">80dp</dimen>
+    <dimen name="grid_padding">20dp</dimen>
+    <dimen name="progress_indicator_size">50dp</dimen>
+    <dimen name="grid_text_padding">10dp</dimen>
+    <dimen name="minimum_image_height">100dp</dimen>
+</resources>
