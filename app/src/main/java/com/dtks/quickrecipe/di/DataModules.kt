@@ -2,7 +2,6 @@ package com.dtks.quickrecipe.di
 
 import android.content.Context
 import androidx.room.Room
-import com.dtks.quickrecipe.data.local.FavoriteRecipeDao
 import com.dtks.quickrecipe.data.local.RecipeDao
 import com.dtks.quickrecipe.data.local.RecipeDatabase
 import dagger.Module
@@ -29,9 +28,5 @@ object DatabaseModule {
 
     @Provides
     fun provideRecipeDao(database: RecipeDatabase): RecipeDao = database.recipeDao()
-
-    @Provides
-    fun provideFavRecipeDao(database: RecipeDatabase): FavoriteRecipeDao =
-        database.favoriteRecipeDao()
 
 }
