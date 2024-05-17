@@ -58,6 +58,8 @@ fun RecipeCard(
                     .height(dimensionResource(id = R.dimen.minimum_image_height))
                     .fillMaxWidth()
             ) {
+
+                //the Loading indicator is overlapped after the image is downloaded
                 LoadingScreen()
                 GlideImage(
                     model = recipe.imageUrl,

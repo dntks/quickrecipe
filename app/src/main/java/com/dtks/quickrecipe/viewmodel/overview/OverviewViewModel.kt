@@ -31,6 +31,9 @@ class OverviewViewModel @Inject constructor(
         searchRecipes()
     }
 
+    /*
+    To be called when search params changed and offset is reset
+     */
     private fun searchRecipes() {
         _uiState.value = OverviewScreenLoading()
         viewModelScope.launch(dispatcher) {
@@ -47,6 +50,9 @@ class OverviewViewModel @Inject constructor(
         }
     }
 
+    /*
+    To be called when paginating. The new results are merged with the current ones
+     */
     private fun loadMoreRecipes() {
         _uiState.value = OverviewScreenLoading(_uiState.value.stateData)
         viewModelScope.launch(dispatcher) {
@@ -64,6 +70,7 @@ class OverviewViewModel @Inject constructor(
         }
     }
 
+    //updating the searchstate with the search text, the start a new search with 0 offset
     fun onSearchTextChange(text: String) {
         _searchState.value = _searchState.value.copy(
             searchText = text,
@@ -76,6 +83,7 @@ class OverviewViewModel @Inject constructor(
         searchRecipes()
     }
 
+    //updating the searchstate with the type, the start a new search with 0 offset
     fun onSearchTypeChange(type: SearchType) {
         _searchState.value = _searchState.value.copy(
             searchType = type,

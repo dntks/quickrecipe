@@ -45,7 +45,8 @@ class OverviewViewModelTest {
 
     @Test
     fun initSetsStateToRecipesLoaded() = testScope.runTest {
-        val expectedState = RecipesLoaded(data = defaultDomainEntities)
+        val expectedState =
+            RecipesLoaded(data = defaultDomainEntities, message = "interesting message")
 
         overviewViewModel = OverviewViewModel(
             searchUseCase = searchUseCaseMock,

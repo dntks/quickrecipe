@@ -60,6 +60,7 @@ fun RecipeSearchBar(
                     .padding(horizontal = dimensionResource(id = R.dimen.card_padding))
             ) {
                 if (isSearching) {
+                    //Current search can be cleared with the back button
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
                         modifier = Modifier

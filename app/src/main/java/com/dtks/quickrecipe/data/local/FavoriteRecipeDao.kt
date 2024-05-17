@@ -5,6 +5,7 @@ import androidx.room.Query
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 
+//Unfortunately didn't have time to add this functionality
 @Dao
 interface FavoriteRecipeDao {
 

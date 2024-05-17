@@ -29,6 +29,8 @@ class QuickRecipeRepository @Inject constructor(
         }
     }
 
+
+    //When the remote search runs to error, this checks the local DB
     private suspend fun searchRecipesInDB(
         apiRequest: SearchApiRequest,
         errorMessage: String
@@ -45,6 +47,7 @@ class QuickRecipeRepository @Inject constructor(
         )
     }
 
+    //Updating the DB with the fresh response
     private suspend fun saveRecipesToDB(response: SearchRecipesResponse): SearchResult {
         val recipeEntities =
             entityTransformer.transformRecipeApiEntitiesToDBEntities(response.results)
@@ -55,6 +58,7 @@ class QuickRecipeRepository @Inject constructor(
         )
     }
 
+    //Retrieving data from the backend
     private suspend fun remoteSearch(apiRequest: SearchApiRequest): RemoteResponse<SearchRecipesResponse> {
         return try {
             Success(remoteDataSource.search(apiRequest))
@@ -63,7 +67,7 @@ class QuickRecipeRepository @Inject constructor(
         }
     }
 
-    // On success saves the data to DB, on error it retrieves the data from the DB
+    // On success this saves the data to DB, on error it retrieves the data from the DB
     suspend fun getRecipeDetails(id: Long): DetailsResult {
         return when (val remoteResponse = getRemoteRecipeDetails(id)) {
             is Success -> saveRecipeToDB(remoteResponse.response)
@@ -71,6 +75,7 @@ class QuickRecipeRepository @Inject constructor(
         }
     }
 
+    // The error message is constant, but could be more meaningful for the user
     private fun findRecipeInDB(id: Long, remoteErrorMessage: String): DetailsResult {
         val dbEntity = recipeDao.findById(id)
         return DetailsResult(
@@ -79,6 +84,8 @@ class QuickRecipeRepository @Inject constructor(
         )
     }
 
+    // Saving the detailed recipe to the same table, as there isn't too much data for a recipe currently.
+    // Improvement would be to have a foreign key, and the details would go separately
     private suspend fun saveRecipeToDB(apiEntity: RecipeDetailsApiEntity): DetailsResult {
         val dbEntity = entityTransformer.transformRecipeDetailsApiEntityToDBEntity(apiEntity)
         recipeDao.upsertRecipeEntity(dbEntity)

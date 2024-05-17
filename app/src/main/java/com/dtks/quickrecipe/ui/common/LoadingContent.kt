@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.dtks.quickrecipe.R
 
 
-// composable for convenience, it show the different content based on the given states
+// composable for convenience, it shows the different content based on the given states
 @Composable
 fun LoadingContent(
     loading: Boolean,

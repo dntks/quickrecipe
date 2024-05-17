@@ -25,7 +25,6 @@ class DetailsViewModelTest {
     private val stateHandleMock = mockk<SavedStateHandle>(relaxed = true)
     private val recipeDetailsUseCaseMock: RecipeDetailsUseCase = mockk(relaxed = true)
 
-
     @Before
     fun setup() {
         coEvery { stateHandleMock.get<String>(any()) } returns "4"
@@ -42,7 +41,8 @@ class DetailsViewModelTest {
 
     @Test
     fun whenInitializedDetailsViewModelSetsStateToRecipeDetailsLoaded() = testScope.runTest {
-        val expectedState = RecipeDetailsLoaded(details = defaultRecipeDetails)
+        val expectedState =
+            RecipeDetailsLoaded(details = defaultRecipeDetails, message = "some message")
 
         detailsViewModel =
             DetailsViewModel(stateHandleMock, recipeDetailsUseCaseMock, testDispatcher)
