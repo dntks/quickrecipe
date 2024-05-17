@@ -38,7 +38,8 @@ class OverviewViewModel @Inject constructor(
                 val searchResult = searchUseCase(_searchState.value)
                 _searchState.value = _searchState.value.copy(canLoadMore = searchResult.canLoadMore)
                 _uiState.value = RecipesLoaded(
-                    data = searchResult.recipes
+                    data = searchResult.recipes,
+                    message = searchResult.messageToShow
                 )
             } catch (exception: Exception) {
                 _uiState.value = OverviewError()
@@ -54,7 +55,8 @@ class OverviewViewModel @Inject constructor(
                 _searchState.value = _searchState.value.copy(canLoadMore = searchResult.canLoadMore)
                 val currentResults = _uiState.value.stateData.orEmpty()
                 _uiState.value = RecipesLoaded(
-                    data = currentResults + searchResult.recipes
+                    data = currentResults + searchResult.recipes,
+                    message = searchResult.messageToShow
                 )
             } catch (exception: Exception) {
                 _uiState.value = OverviewError(_uiState.value.stateData)

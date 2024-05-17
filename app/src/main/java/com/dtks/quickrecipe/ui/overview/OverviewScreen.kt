@@ -15,6 +15,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -27,6 +28,8 @@ import com.dtks.quickrecipe.ui.theme.Typography
 import com.dtks.quickrecipe.viewmodel.overview.OverviewError
 import com.dtks.quickrecipe.viewmodel.overview.OverviewScreenLoading
 import com.dtks.quickrecipe.viewmodel.overview.OverviewViewModel
+import com.dtks.quickrecipe.viewmodel.overview.RecipesLoaded
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -35,7 +38,7 @@ fun OverviewScreen(
     onRecipeClick: (RecipeDomainEntity) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
+    val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -75,6 +78,13 @@ fun OverviewScreen(
                     uiState = uiState,
                     onClick = onRecipeClick,
                 ) { viewModel.loadMore() }
+            }
+        }
+        (uiState as? RecipesLoaded)?.message?.let {
+            scope.launch {
+                snackbarHostState.showSnackbar(
+                    message = it
+                )
             }
         }
     }

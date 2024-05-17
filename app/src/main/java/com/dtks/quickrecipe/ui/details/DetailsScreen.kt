@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
@@ -39,6 +40,7 @@ import com.dtks.quickrecipe.viewmodel.details.DetailsError
 import com.dtks.quickrecipe.viewmodel.details.DetailsViewModel
 import com.dtks.quickrecipe.viewmodel.details.Loading
 import com.dtks.quickrecipe.viewmodel.details.RecipeDetailsLoaded
+import kotlinx.coroutines.launch
 
 @Composable
 fun DetailsScreen(
@@ -49,6 +51,7 @@ fun DetailsScreen(
 
     val snackbarHostState = remember { SnackbarHostState() }
     val recipeDetails by viewModel.detailsFlow.collectAsStateWithLifecycle()
+    val scope = rememberCoroutineScope()
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -79,8 +82,16 @@ fun DetailsScreen(
                     NoResultsScreen(R.string.no_content)
                 }
             ) {
-                (recipeDetails as? RecipeDetailsLoaded)?.let {
-                    RecipeDetailsComposable(it.details)
+                (recipeDetails as? RecipeDetailsLoaded)?.let { detailsLoaded ->
+                    RecipeDetailsComposable(detailsLoaded.details)
+
+                    detailsLoaded.message?.let {
+                        scope.launch {
+                            snackbarHostState.showSnackbar(
+                                message = it
+                            )
+                        }
+                    }
                 }
             }
 

@@ -35,7 +35,10 @@ class DetailsViewModel @Inject constructor(
         viewModelScope.launch(dispatcher) {
             try {
                 val detailsResponse = recipeDetailsUseCase(id)
-                val detailsState = RecipeDetailsLoaded(detailsResponse.recipeDetails)
+                val detailsState = RecipeDetailsLoaded(
+                    details = detailsResponse.recipeDetails,
+                    message = detailsResponse.messageToShow
+                )
                 _detailsFlow.value = detailsState
             } catch (exception: Exception) {
                 _detailsFlow.value = DetailsError(exception.message)
