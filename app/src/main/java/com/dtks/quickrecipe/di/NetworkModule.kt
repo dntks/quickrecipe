@@ -27,6 +27,7 @@ object NetworkModule {
             .addInterceptor(interceptor)
             .readTimeout(15, TimeUnit.SECONDS)
             .connectTimeout(15, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(true)
             .build()
     }
 
