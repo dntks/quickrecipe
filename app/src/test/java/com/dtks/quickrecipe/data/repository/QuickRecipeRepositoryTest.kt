@@ -22,14 +22,15 @@ import org.junit.Before
 import org.junit.Test
 
 class QuickRecipeRepositoryTest {
-
     private val remoteDataSourceMock: RemoteDataSource = mockk(relaxed = true)
     private val recipeDaoMock: RecipeDao = mockk(relaxed = true)
     private val entityTransformer: EntityTransformer = mockk(relaxed = true)
     private val repository: QuickRecipeRepository = QuickRecipeRepository(
         remoteDataSource = remoteDataSourceMock,
         recipeDao = recipeDaoMock,
-        entityTransformer = entityTransformer
+        entityTransformer = entityTransformer,
+        applicationScope = mockk(relaxed = true),
+        dispatcher = mockk(relaxed = true)
     )
 
     @Before

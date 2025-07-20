@@ -5,10 +5,17 @@ import com.dtks.quickrecipe.data.api.model.RecipeDetailsApiEntity
 import com.dtks.quickrecipe.data.api.model.SearchApiRequest
 import com.dtks.quickrecipe.data.api.model.SearchRecipesResponse
 import com.dtks.quickrecipe.data.local.RecipeDao
+import com.dtks.quickrecipe.di.ApplicationScope
+import com.dtks.quickrecipe.di.IoDispatcher
 import com.dtks.quickrecipe.domain.DetailsResult
 import com.dtks.quickrecipe.domain.EntityTransformer
 import com.dtks.quickrecipe.domain.SearchResult
 import com.dtks.quickrecipe.domain.SearchType
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /*
@@ -19,14 +26,22 @@ class QuickRecipeRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val recipeDao: RecipeDao,
     private val entityTransformer: EntityTransformer,
+    @ApplicationScope private val applicationScope: CoroutineScope,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) {
 
+    val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        println("Caught $throwable")
+
+    }
     // On success saves the data to DB, on error it retrieves the data from the DB
-    suspend fun search(apiRequest: SearchApiRequest): SearchResult {
-        return when (val remoteResponse = remoteSearch(apiRequest)) {
-            is Success -> saveRecipesToDB(remoteResponse.response)
-            is Error -> searchRecipesInDB(apiRequest, REMOTE_ERROR_MESSAGE)
-        }
+    suspend fun search(apiRequest: SearchApiRequest) = withContext(dispatcher) {
+        applicationScope.async(exceptionHandler) {
+            when (val remoteResponse =  remoteSearch(apiRequest)) {
+                is Success -> saveRecipesToDB(remoteResponse.response)
+                is Error -> searchRecipesInDB(apiRequest, REMOTE_ERROR_MESSAGE)
+            }
+        }.await()
     }
 
 
