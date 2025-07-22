@@ -13,7 +13,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.dtks.quickrecipe.R
 
-
 // composable for convenience, it shows the different content based on the given states
 @Composable
 fun LoadingContent(

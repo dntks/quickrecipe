@@ -3,7 +3,7 @@ package com.dtks.quickrecipe.ui.details
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,7 +30,7 @@ fun RecipeDetailsTopBar(
         },
         navigationIcon = {
             IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, stringResource(id = R.string.back))
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(id = R.string.back))
             }
         },
         modifier = Modifier

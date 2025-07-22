@@ -23,9 +23,9 @@ class OverviewViewModel @Inject constructor(
     private val _searchState = MutableStateFlow(SearchState())
     val searchState = _searchState.asStateFlow()
 
-    private val _uiState =
+    private val _recipeListState =
         MutableStateFlow<OverviewScreenState<List<RecipeDomainEntity>>>(OverviewScreenLoading())
-    val uiState = _uiState.asStateFlow()
+    val recipeListState = _recipeListState.asStateFlow()
 
     init {
         searchRecipes()
@@ -35,17 +35,17 @@ class OverviewViewModel @Inject constructor(
     To be called when search params changed and offset is reset
      */
     private fun searchRecipes() {
-        _uiState.value = OverviewScreenLoading()
+        _recipeListState.value = OverviewScreenLoading()
         viewModelScope.launch(dispatcher) {
             try {
                 val searchResult = searchUseCase(_searchState.value)
                 _searchState.value = _searchState.value.copy(canLoadMore = searchResult.canLoadMore)
-                _uiState.value = RecipesLoaded(
+                _recipeListState.value = RecipesLoaded(
                     data = searchResult.recipes,
                     message = searchResult.messageToShow
                 )
             } catch (exception: Exception) {
-                _uiState.value = OverviewError()
+                _recipeListState.value = OverviewError()
             }
         }
     }
@@ -54,18 +54,18 @@ class OverviewViewModel @Inject constructor(
     To be called when paginating. The new results are merged with the current ones
      */
     private fun loadMoreRecipes() {
-        _uiState.value = OverviewScreenLoading(_uiState.value.stateData)
-        viewModelScope.launch(dispatcher) {
+        _recipeListState.value = OverviewScreenLoading(_recipeListState.value.stateData)
+        viewModelScope.launch {
             try {
                 val searchResult = searchUseCase(_searchState.value)
                 _searchState.value = _searchState.value.copy(canLoadMore = searchResult.canLoadMore)
-                val currentResults = _uiState.value.stateData.orEmpty()
-                _uiState.value = RecipesLoaded(
+                val currentResults = _recipeListState.value.stateData.orEmpty()
+                _recipeListState.value = RecipesLoaded(
                     data = currentResults + searchResult.recipes,
                     message = searchResult.messageToShow
                 )
             } catch (exception: Exception) {
-                _uiState.value = OverviewError(_uiState.value.stateData)
+                _recipeListState.value = OverviewError(_recipeListState.value.stateData)
             }
         }
     }
@@ -77,7 +77,7 @@ class OverviewViewModel @Inject constructor(
             offset = 0,
             canLoadMore = true
         )
-        _uiState.value = OverviewScreenLoading(
+        _recipeListState.value = OverviewScreenLoading(
             data = emptyList()
         )
         searchRecipes()
@@ -90,7 +90,7 @@ class OverviewViewModel @Inject constructor(
             offset = 0,
             canLoadMore = true
         )
-        _uiState.value = OverviewScreenLoading(
+        _recipeListState.value = OverviewScreenLoading(
             data = emptyList()
         )
         searchRecipes()

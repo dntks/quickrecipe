@@ -34,14 +34,15 @@ class QuickRecipeRepository @Inject constructor(
         println("Caught $throwable")
 
     }
+
     // On success saves the data to DB, on error it retrieves the data from the DB
     suspend fun search(apiRequest: SearchApiRequest) = withContext(dispatcher) {
-        applicationScope.async(exceptionHandler) {
-            when (val remoteResponse =  remoteSearch(apiRequest)) {
-                is Success -> saveRecipesToDB(remoteResponse.response)
-                is Error -> searchRecipesInDB(apiRequest, REMOTE_ERROR_MESSAGE)
-            }
-        }.await()
+        //should save to DB even if viewModelScope is cancelled
+        when (val remoteResponse = remoteSearch(apiRequest)) {
+            is Success -> saveRecipesToDB(remoteResponse.response)
+            is Error -> searchRecipesInDB(apiRequest, REMOTE_ERROR_MESSAGE)
+        }
+
     }
 
 

@@ -37,7 +37,8 @@ fun OverviewScreen(
     viewModel: OverviewViewModel = hiltViewModel(),
     onRecipeClick: (RecipeDomainEntity) -> Unit,
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val recipeListState by viewModel.recipeListState.collectAsStateWithLifecycle()
+    val searchState by viewModel.searchState.collectAsStateWithLifecycle()
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     Scaffold(
@@ -62,25 +63,29 @@ fun OverviewScreen(
             modifier = Modifier
                 .padding(paddingValues)
         ) {
-            RecipeSearchBar(viewModel)
+            RecipeSearchBar(
+                searchState = searchState,
+                onSearchTextChange = viewModel::onSearchTextChange,
+                onSearchTypeChange = viewModel::onSearchTypeChange
+            )
             LoadingContent(
-                loading = uiState is OverviewScreenLoading,
-                empty = uiState.stateData.isNullOrEmpty(),
-                error = uiState is OverviewError,
+                loading = recipeListState is OverviewScreenLoading,
+                empty = recipeListState.stateData.isNullOrEmpty(),
+                error = recipeListState is OverviewError,
                 emptyContent = { NoResultsScreen(R.string.no_recipes_found) },
                 errorContent = {
                     NoResultsScreen(R.string.details_error)
                 }
             ) {
-                val recipes = uiState.stateData
+                val recipes = recipeListState.stateData
                 RecipeList(
                     recipes = recipes.orEmpty(),
-                    uiState = uiState,
+                    uiState = recipeListState,
                     onClick = onRecipeClick,
-                ) { viewModel.loadMore() }
+                ) { viewModel::loadMore }
             }
         }
-        (uiState as? RecipesLoaded)?.message?.let {
+        (recipeListState as? RecipesLoaded)?.message?.let {
             scope.launch {
                 snackbarHostState.showSnackbar(
                     message = it

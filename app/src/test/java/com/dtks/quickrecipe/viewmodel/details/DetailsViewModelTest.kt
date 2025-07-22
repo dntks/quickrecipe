@@ -32,20 +32,14 @@ class DetailsViewModelTest {
     }
 
     @Test
-    fun whenInitializedDetailsViewModelCallsRecipeDetailsUseCase() = testScope.runTest {
-        detailsViewModel =
-            DetailsViewModel(stateHandleMock, recipeDetailsUseCaseMock, testDispatcher)
-
-        coVerify { recipeDetailsUseCaseMock.invoke(4) }
-    }
-
-    @Test
     fun whenInitializedDetailsViewModelSetsStateToRecipeDetailsLoaded() = testScope.runTest {
         val expectedState =
             RecipeDetailsLoaded(details = defaultRecipeDetails, message = "some message")
 
         detailsViewModel =
-            DetailsViewModel(stateHandleMock, recipeDetailsUseCaseMock, testDispatcher)
+            DetailsViewModel(recipeDetailsUseCaseMock, testDispatcher)
+
+        detailsViewModel.getDetails(4)
 
         val actualState = detailsViewModel.detailsFlow.first()
         Assert.assertEquals(expectedState, actualState)
@@ -57,7 +51,9 @@ class DetailsViewModelTest {
         coEvery { recipeDetailsUseCaseMock.invoke(any()) } throws Exception("oho")
 
         detailsViewModel =
-            DetailsViewModel(stateHandleMock, recipeDetailsUseCaseMock, testDispatcher)
+            DetailsViewModel(recipeDetailsUseCaseMock, testDispatcher)
+
+        detailsViewModel.getDetails(4)
 
         val actualState = detailsViewModel.detailsFlow.first()
         Assert.assertEquals(expectedState, actualState)

@@ -19,8 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,21 +26,22 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.dtks.quickrecipe.R
+import com.dtks.quickrecipe.domain.SearchType
 import com.dtks.quickrecipe.domain.SearchType.BY_INGREDIENT
 import com.dtks.quickrecipe.domain.SearchType.BY_TITLE
 import com.dtks.quickrecipe.ui.theme.Typography
-import com.dtks.quickrecipe.viewmodel.overview.OverviewViewModel
-import kotlinx.coroutines.flow.map
+import com.dtks.quickrecipe.viewmodel.overview.SearchState
 
 @Composable
 fun RecipeSearchBar(
-    viewModel: OverviewViewModel
+    searchState: SearchState,
+    onSearchTextChange: (String) -> Unit,
+    onSearchTypeChange: (SearchType) -> Unit,
 ) {
 
-    val searchType by viewModel.searchState.map { it.searchType }.collectAsState(BY_TITLE)
-    val searchText by viewModel.searchState.map { it.searchText }.collectAsState("")
-    val isSearching by viewModel.searchState.map { it.searchText.isNotEmpty() }
-        .collectAsState(false)
+    val searchType = searchState.searchType
+    val searchText = searchState.searchText
+    val isSearching = searchState.searchText.isNotEmpty()
     Box(modifier = Modifier.padding(dimensionResource(id = R.dimen.generic_padding))) {
         Card(
             colors = CardDefaults.cardColors(
@@ -66,7 +65,7 @@ fun RecipeSearchBar(
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
                             .clickable {
-                                viewModel.onSearchTextChange("")
+                                onSearchTextChange("")
                             },
                         contentDescription = stringResource(id = R.string.back)
                     )
@@ -83,7 +82,7 @@ fun RecipeSearchBar(
                         .align(Alignment.CenterVertically),
                     value = searchText,
                     onValueChange = {
-                        viewModel.onSearchTextChange(it)
+                        onSearchTextChange(it)
                     },
 
                     textStyle = Typography.labelMedium,
@@ -119,7 +118,7 @@ fun RecipeSearchBar(
                 Checkbox(
                     checked = searchType == BY_INGREDIENT,
                     onCheckedChange = { checked ->
-                        viewModel.onSearchTypeChange(
+                        onSearchTypeChange(
                             if (checked) BY_INGREDIENT else BY_TITLE
                         )
                     }

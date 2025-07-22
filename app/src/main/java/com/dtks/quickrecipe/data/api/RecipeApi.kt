@@ -1,5 +1,6 @@
 package com.dtks.quickrecipe.data.api
 
+import com.dtks.quickrecipe.BuildConfig.API_KEY
 import com.dtks.quickrecipe.data.api.model.RecipeDetailsApiEntity
 import com.dtks.quickrecipe.data.api.model.SearchRecipesResponse
 import retrofit2.http.GET

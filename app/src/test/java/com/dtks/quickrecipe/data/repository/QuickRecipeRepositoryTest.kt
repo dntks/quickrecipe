@@ -16,7 +16,11 @@ import com.dtks.quickrecipe.domain.SearchType
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -25,12 +29,13 @@ class QuickRecipeRepositoryTest {
     private val remoteDataSourceMock: RemoteDataSource = mockk(relaxed = true)
     private val recipeDaoMock: RecipeDao = mockk(relaxed = true)
     private val entityTransformer: EntityTransformer = mockk(relaxed = true)
+    @OptIn(ExperimentalCoroutinesApi::class)
     private val repository: QuickRecipeRepository = QuickRecipeRepository(
         remoteDataSource = remoteDataSourceMock,
         recipeDao = recipeDaoMock,
         entityTransformer = entityTransformer,
-        applicationScope = mockk(relaxed = true),
-        dispatcher = mockk(relaxed = true)
+        applicationScope = TestScope(),
+        dispatcher = UnconfinedTestDispatcher()
     )
 
     @Before
@@ -54,7 +59,7 @@ class QuickRecipeRepositoryTest {
 
     @Test
     fun givenTotalResultsBiggerThanOffsetPlusNumberWhenSearchCalledThenSearchResultReturnedCorrectly() =
-        runBlocking {
+        runTest {
 
             coEvery { remoteDataSourceMock.search(any()) } returns SearchRecipesResponse(
                 results = defaultRecipeApiEntityList,

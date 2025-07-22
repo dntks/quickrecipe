@@ -53,7 +53,7 @@ class OverviewViewModelTest {
             dispatcher = testDispatcher
         )
 
-        val state = overviewViewModel.uiState.first()
+        val state = overviewViewModel.recipeListState.first()
 
         Assert.assertEquals(expectedState, state)
     }
@@ -68,7 +68,7 @@ class OverviewViewModelTest {
             dispatcher = testDispatcher
         )
 
-        val state = overviewViewModel.uiState.first()
+        val state = overviewViewModel.recipeListState.first()
 
         Assert.assertEquals(expectedState, state)
     }
