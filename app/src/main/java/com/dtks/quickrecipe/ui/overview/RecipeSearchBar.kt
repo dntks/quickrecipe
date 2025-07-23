@@ -30,7 +30,7 @@ import com.dtks.quickrecipe.data.repository.model.SearchType
 import com.dtks.quickrecipe.data.repository.model.SearchType.BY_INGREDIENT
 import com.dtks.quickrecipe.data.repository.model.SearchType.BY_TITLE
 import com.dtks.quickrecipe.ui.theme.Typography
-import com.dtks.quickrecipe.viewmodel.overview.SearchState
+import com.dtks.quickrecipe.ui.viewmodel.overview.SearchState
 
 @Composable
 fun RecipeSearchBar(

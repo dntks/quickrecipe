@@ -1,4 +1,4 @@
-package com.dtks.quickrecipe.viewmodel.overview
+package com.dtks.quickrecipe.ui.viewmodel.overview
 
 import com.dtks.quickrecipe.data.repository.model.SearchType
 

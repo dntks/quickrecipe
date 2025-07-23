@@ -1,4 +1,4 @@
-package com.dtks.quickrecipe.viewmodel.overview
+package com.dtks.quickrecipe.ui.viewmodel.overview
 
 
 sealed class OverviewScreenState<out T>(val stateData: T?)

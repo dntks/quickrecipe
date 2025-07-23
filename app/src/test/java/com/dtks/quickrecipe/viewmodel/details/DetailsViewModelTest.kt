@@ -4,8 +4,10 @@ import androidx.lifecycle.SavedStateHandle
 import com.dtks.quickrecipe.data.defaultDetailsResult
 import com.dtks.quickrecipe.data.defaultRecipeDetails
 import com.dtks.quickrecipe.domain.usecases.RecipeDetailsUseCase
+import com.dtks.quickrecipe.ui.viewmodel.details.DetailsError
+import com.dtks.quickrecipe.ui.viewmodel.details.DetailsViewModel
+import com.dtks.quickrecipe.ui.viewmodel.details.RecipeDetailsLoaded
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first

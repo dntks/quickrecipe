@@ -1,4 +1,4 @@
-package com.dtks.quickrecipe.viewmodel.details
+package com.dtks.quickrecipe.ui.viewmodel.details
 
 import com.dtks.quickrecipe.data.repository.model.RecipeDetails
 

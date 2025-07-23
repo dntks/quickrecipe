@@ -36,10 +36,10 @@ import com.dtks.quickrecipe.ui.common.LoadingContent
 import com.dtks.quickrecipe.ui.common.NoResultsScreen
 import com.dtks.quickrecipe.ui.theme.Link
 import com.dtks.quickrecipe.ui.util.toAnnotatedString
-import com.dtks.quickrecipe.viewmodel.details.DetailsError
-import com.dtks.quickrecipe.viewmodel.details.DetailsViewModel
-import com.dtks.quickrecipe.viewmodel.details.Loading
-import com.dtks.quickrecipe.viewmodel.details.RecipeDetailsLoaded
+import com.dtks.quickrecipe.ui.viewmodel.details.DetailsError
+import com.dtks.quickrecipe.ui.viewmodel.details.DetailsViewModel
+import com.dtks.quickrecipe.ui.viewmodel.details.Loading
+import com.dtks.quickrecipe.ui.viewmodel.details.RecipeDetailsLoaded
 import kotlinx.coroutines.launch
 
 @Composable

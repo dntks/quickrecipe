@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import com.dtks.quickrecipe.R
 import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
-import com.dtks.quickrecipe.viewmodel.overview.OverviewScreenLoading
-import com.dtks.quickrecipe.viewmodel.overview.OverviewScreenState
+import com.dtks.quickrecipe.ui.viewmodel.overview.OverviewScreenLoading
+import com.dtks.quickrecipe.ui.viewmodel.overview.OverviewScreenState
 
 @Composable
 fun RecipeList(

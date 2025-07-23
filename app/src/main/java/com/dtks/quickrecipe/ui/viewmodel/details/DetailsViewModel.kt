@@ -1,6 +1,5 @@
-package com.dtks.quickrecipe.viewmodel.details
+package com.dtks.quickrecipe.ui.viewmodel.details
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dtks.quickrecipe.di.DefaultDispatcher

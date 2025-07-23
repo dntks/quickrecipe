@@ -3,7 +3,7 @@ package com.dtks.quickrecipe.domain.usecases
 import com.dtks.quickrecipe.data.api.model.SearchApiRequest
 import com.dtks.quickrecipe.data.repository.QuickRecipeRepository
 import com.dtks.quickrecipe.data.repository.model.SearchType
-import com.dtks.quickrecipe.viewmodel.overview.SearchState
+import com.dtks.quickrecipe.ui.viewmodel.overview.SearchState
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking

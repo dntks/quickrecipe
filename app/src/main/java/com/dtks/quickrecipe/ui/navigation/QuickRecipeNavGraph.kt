@@ -14,8 +14,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.dtks.quickrecipe.ui.details.DetailsScreen
 import com.dtks.quickrecipe.ui.overview.OverviewScreen
-import com.dtks.quickrecipe.viewmodel.details.DetailsViewModel
-import com.dtks.quickrecipe.viewmodel.overview.OverviewViewModel
+import com.dtks.quickrecipe.ui.viewmodel.details.DetailsViewModel
+import com.dtks.quickrecipe.ui.viewmodel.overview.OverviewViewModel
 import kotlinx.serialization.Serializable
 
 @Serializable

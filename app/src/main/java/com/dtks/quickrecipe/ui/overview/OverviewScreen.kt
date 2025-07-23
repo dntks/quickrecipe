@@ -25,10 +25,10 @@ import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
 import com.dtks.quickrecipe.ui.common.LoadingContent
 import com.dtks.quickrecipe.ui.common.NoResultsScreen
 import com.dtks.quickrecipe.ui.theme.Typography
-import com.dtks.quickrecipe.viewmodel.overview.OverviewError
-import com.dtks.quickrecipe.viewmodel.overview.OverviewScreenLoading
-import com.dtks.quickrecipe.viewmodel.overview.OverviewViewModel
-import com.dtks.quickrecipe.viewmodel.overview.RecipesLoaded
+import com.dtks.quickrecipe.ui.viewmodel.overview.OverviewError
+import com.dtks.quickrecipe.ui.viewmodel.overview.OverviewScreenLoading
+import com.dtks.quickrecipe.ui.viewmodel.overview.OverviewViewModel
+import com.dtks.quickrecipe.ui.viewmodel.overview.RecipesLoaded
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
