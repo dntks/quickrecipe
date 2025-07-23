@@ -10,9 +10,9 @@ import com.dtks.quickrecipe.data.defaultRecipeDBEntityList
 import com.dtks.quickrecipe.data.defaultRecipeDetails
 import com.dtks.quickrecipe.data.defaultRecipeDetailsApiEntity
 import com.dtks.quickrecipe.data.local.RecipeDao
-import com.dtks.quickrecipe.domain.EntityTransformer
-import com.dtks.quickrecipe.domain.SearchResult
-import com.dtks.quickrecipe.domain.SearchType
+import com.dtks.quickrecipe.data.repository.EntityTransformer
+import com.dtks.quickrecipe.data.repository.model.SearchResult
+import com.dtks.quickrecipe.data.repository.model.SearchType
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

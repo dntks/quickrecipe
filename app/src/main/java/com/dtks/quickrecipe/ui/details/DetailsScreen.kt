@@ -31,7 +31,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.dtks.quickrecipe.R
-import com.dtks.quickrecipe.domain.RecipeDetails
+import com.dtks.quickrecipe.data.repository.model.RecipeDetails
 import com.dtks.quickrecipe.ui.common.LoadingContent
 import com.dtks.quickrecipe.ui.common.NoResultsScreen
 import com.dtks.quickrecipe.ui.theme.Link

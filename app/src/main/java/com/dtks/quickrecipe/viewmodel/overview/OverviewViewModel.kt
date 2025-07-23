@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dtks.quickrecipe.data.api.RecipeApi
 import com.dtks.quickrecipe.di.DefaultDispatcher
-import com.dtks.quickrecipe.domain.RecipeDomainEntity
-import com.dtks.quickrecipe.domain.SearchType
+import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
+import com.dtks.quickrecipe.data.repository.model.SearchType
 import com.dtks.quickrecipe.domain.usecases.SearchUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher

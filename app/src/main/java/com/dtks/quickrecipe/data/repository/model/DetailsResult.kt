@@ -1,4 +1,4 @@
-package com.dtks.quickrecipe.domain
+package com.dtks.quickrecipe.data.repository.model
 
 data class DetailsResult(
     val recipeDetails: RecipeDetails,

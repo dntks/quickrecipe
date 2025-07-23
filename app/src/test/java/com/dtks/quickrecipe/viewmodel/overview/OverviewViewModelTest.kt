@@ -2,8 +2,8 @@ package com.dtks.quickrecipe.viewmodel.overview
 
 import com.dtks.quickrecipe.data.defaultDomainEntities
 import com.dtks.quickrecipe.data.defaultSearchResult
-import com.dtks.quickrecipe.domain.RecipeDomainEntity
-import com.dtks.quickrecipe.domain.SearchType.BY_INGREDIENT
+import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
+import com.dtks.quickrecipe.data.repository.model.SearchType.BY_INGREDIENT
 import com.dtks.quickrecipe.domain.usecases.SearchUseCase
 import io.mockk.coEvery
 import io.mockk.coVerify

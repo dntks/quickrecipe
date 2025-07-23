@@ -4,10 +4,10 @@ import com.dtks.quickrecipe.data.api.model.IngredientApiEntity
 import com.dtks.quickrecipe.data.api.model.RecipeApiEntity
 import com.dtks.quickrecipe.data.api.model.RecipeDetailsApiEntity
 import com.dtks.quickrecipe.data.local.RecipeDBEntity
-import com.dtks.quickrecipe.domain.DetailsResult
-import com.dtks.quickrecipe.domain.RecipeDetails
-import com.dtks.quickrecipe.domain.RecipeDomainEntity
-import com.dtks.quickrecipe.domain.SearchResult
+import com.dtks.quickrecipe.data.repository.model.DetailsResult
+import com.dtks.quickrecipe.data.repository.model.RecipeDetails
+import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
+import com.dtks.quickrecipe.data.repository.model.SearchResult
 
 
 val defaultRecipeDBEntity = RecipeDBEntity(

@@ -8,6 +8,7 @@ import com.dtks.quickrecipe.data.defaultRecipeDBEntityList
 import com.dtks.quickrecipe.data.defaultRecipeDetails
 import com.dtks.quickrecipe.data.defaultRecipeDetailsApiEntity
 import com.dtks.quickrecipe.data.reducedRecipeDBEntityList
+import com.dtks.quickrecipe.data.repository.EntityTransformer
 import org.junit.Assert
 import org.junit.Test
 

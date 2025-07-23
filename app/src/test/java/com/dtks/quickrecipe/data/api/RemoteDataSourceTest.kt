@@ -3,7 +3,7 @@ package com.dtks.quickrecipe.data.api
 import com.dtks.quickrecipe.data.api.model.SearchApiRequest
 import com.dtks.quickrecipe.data.api.model.SearchRecipesResponse
 import com.dtks.quickrecipe.data.defaultRecipeApiEntityList
-import com.dtks.quickrecipe.domain.SearchType
+import com.dtks.quickrecipe.data.repository.model.SearchType
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

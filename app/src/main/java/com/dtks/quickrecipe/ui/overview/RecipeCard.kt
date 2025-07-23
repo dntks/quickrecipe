@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.dtks.quickrecipe.R
-import com.dtks.quickrecipe.domain.RecipeDomainEntity
+import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
 import com.dtks.quickrecipe.ui.common.LoadingScreen
 import com.dtks.quickrecipe.ui.theme.CardBackground
 import com.dtks.quickrecipe.ui.theme.Typography

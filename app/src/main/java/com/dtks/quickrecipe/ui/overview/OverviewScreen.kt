@@ -21,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dtks.quickrecipe.R
-import com.dtks.quickrecipe.domain.RecipeDomainEntity
+import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
 import com.dtks.quickrecipe.ui.common.LoadingContent
 import com.dtks.quickrecipe.ui.common.NoResultsScreen
 import com.dtks.quickrecipe.ui.theme.Typography

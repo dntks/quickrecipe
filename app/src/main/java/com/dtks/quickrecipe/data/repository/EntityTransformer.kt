@@ -1,10 +1,11 @@
-package com.dtks.quickrecipe.domain
+package com.dtks.quickrecipe.data.repository
 
 import com.dtks.quickrecipe.data.api.model.RecipeApiEntity
 import com.dtks.quickrecipe.data.api.model.RecipeDetailsApiEntity
 import com.dtks.quickrecipe.data.local.RecipeDBEntity
+import com.dtks.quickrecipe.data.repository.model.RecipeDetails
+import com.dtks.quickrecipe.data.repository.model.RecipeDomainEntity
 import javax.inject.Inject
-
 
 // Transforming entities between the different layers.
 // For convenience there's only one class, but it needs to be separated if it'd grow too big.

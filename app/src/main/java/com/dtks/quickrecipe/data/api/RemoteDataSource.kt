@@ -4,7 +4,7 @@ import com.dtks.quickrecipe.data.api.model.RecipeDetailsApiEntity
 import com.dtks.quickrecipe.data.api.model.SearchApiRequest
 import com.dtks.quickrecipe.data.api.model.SearchRecipesResponse
 import com.dtks.quickrecipe.di.IoDispatcher
-import com.dtks.quickrecipe.domain.SearchType
+import com.dtks.quickrecipe.data.repository.model.SearchType
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

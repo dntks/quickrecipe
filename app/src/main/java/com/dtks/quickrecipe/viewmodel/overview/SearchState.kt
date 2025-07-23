@@ -1,6 +1,6 @@
 package com.dtks.quickrecipe.viewmodel.overview
 
-import com.dtks.quickrecipe.domain.SearchType
+import com.dtks.quickrecipe.data.repository.model.SearchType
 
 //This class is responsible for storing the different UI setups
 data class SearchState(

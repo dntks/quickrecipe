@@ -1,6 +1,6 @@
 package com.dtks.quickrecipe.viewmodel.details
 
-import com.dtks.quickrecipe.domain.RecipeDetails
+import com.dtks.quickrecipe.data.repository.model.RecipeDetails
 
 sealed class DetailScreenState
 

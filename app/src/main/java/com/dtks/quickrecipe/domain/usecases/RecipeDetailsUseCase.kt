@@ -1,7 +1,7 @@
 package com.dtks.quickrecipe.domain.usecases
 
 import com.dtks.quickrecipe.data.repository.QuickRecipeRepository
-import com.dtks.quickrecipe.domain.DetailsResult
+import com.dtks.quickrecipe.data.repository.model.DetailsResult
 import javax.inject.Inject
 
 class RecipeDetailsUseCase @Inject constructor(

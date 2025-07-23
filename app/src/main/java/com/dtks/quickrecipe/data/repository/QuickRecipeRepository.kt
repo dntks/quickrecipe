@@ -7,10 +7,10 @@ import com.dtks.quickrecipe.data.api.model.SearchRecipesResponse
 import com.dtks.quickrecipe.data.local.RecipeDao
 import com.dtks.quickrecipe.di.ApplicationScope
 import com.dtks.quickrecipe.di.IoDispatcher
-import com.dtks.quickrecipe.domain.DetailsResult
-import com.dtks.quickrecipe.domain.EntityTransformer
-import com.dtks.quickrecipe.domain.SearchResult
-import com.dtks.quickrecipe.domain.SearchType
+import com.dtks.quickrecipe.data.repository.model.DetailsResult
+import com.dtks.quickrecipe.data.repository.EntityTransformer
+import com.dtks.quickrecipe.data.repository.model.SearchResult
+import com.dtks.quickrecipe.data.repository.model.SearchType
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
